@@ -37,3 +37,11 @@ func TestPopCountByOneBit(t *testing.T) {
 		t.Errorf("got: %v want: %v", PopCountByOneBit(15), expected)
 	}
 }
+
+func TestPopCountOptimize(t *testing.T) {
+	// 0000 1111 -> 15
+	var expected int = 4
+	if PopCountOptimize(15) != expected {
+		t.Errorf("got: %v want: %v", PopCountOptimize(15), expected)
+	}
+}
