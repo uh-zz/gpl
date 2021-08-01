@@ -29,3 +29,11 @@ func TestPopCount(t *testing.T) {
 		t.Errorf("got: %v want: %v", PopCount(15), expected)
 	}
 }
+
+func TestPopCountByOneBit(t *testing.T) {
+	// 0000 1111 -> 15
+	var expected int = 4
+	if PopCountByOneBit(15) != expected {
+		t.Errorf("got: %v want: %v", PopCountByOneBit(15), expected)
+	}
+}

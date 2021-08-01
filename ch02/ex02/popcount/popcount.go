@@ -12,6 +12,8 @@ func init() {
 
 // PopCount はxのポピュレーションカウント(1が設定されているビット数)を返す
 // 著者が言うには、このアルゴリズムはビットを数える最速のアルゴリズムではないらしい
+//
+// [pattern 1] テーブルを参照するタイプ
 func PopCount(x uint64) int {
 	var (
 		cnt      int
@@ -20,5 +22,21 @@ func PopCount(x uint64) int {
 	for i := 0; i < byteUnit; i++ {
 		cnt += int(pc[byte(x>>(i*8))])
 	}
+	return cnt
+}
+
+// [pattern 2] 1bitずつ見ていくパターン
+// これやってたわ。。(一番効率悪)
+func PopCountByOneBit(x uint64) int {
+	var (
+		cnt  int
+		mask uint64 = 1
+	)
+	for ; mask != 0; mask = mask << 1 {
+		if x&mask > 0 {
+			cnt++
+		}
+	}
+
 	return cnt
 }
