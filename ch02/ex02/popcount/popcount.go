@@ -1,7 +1,7 @@
 package popcount
 
 // pc[i] はiのポピュレーションカウントです
-// [FYI] https://play.golang.org/p/j8LVzz4Hjk9
+// FYI: https://play.golang.org/p/j8LVzz4Hjk9
 var pc [256]byte
 
 func init() {
@@ -43,7 +43,7 @@ func PopCountByOneBit(x uint64) int {
 
 // [pattern 3] x&(x-1) は xで１が設定されている最下位ビットをクリアする
 // この中では一番効率的
-// [FYI] https://play.golang.org/p/ZbzRNst4k3W
+// FYI: https://play.golang.org/p/ZbzRNst4k3W
 func PopCountOptimize(x uint64) int {
 	var cnt int
 	for ; x != 0; x &= x - 1 {
