@@ -6,7 +6,9 @@ func main() {
 
 	data := []string{"one", "one", "two", "three", "three", "three"}
 
-	fmt.Println(deduplication(data))
+	// fmt.Println(deduplication(data))
+
+	fmt.Println(eliminateAdjacentDuplicates(data))
 }
 
 func deduplication(slice []string) []string {
