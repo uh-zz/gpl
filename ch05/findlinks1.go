@@ -31,6 +31,7 @@ func visit(links []string, n *html.Node) []string {
 		}
 	}
 
+	// ノードnに対するツリーを加工するために、visitはFirstChildリンクリストに保持されているnのChildに対して、自身を再帰的に呼び出す
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		links = visit(links, c)
 	}
