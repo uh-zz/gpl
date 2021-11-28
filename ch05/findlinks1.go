@@ -31,9 +31,12 @@ func visit(links []string, n *html.Node) []string {
 		}
 	}
 
-	// ノードnに対するツリーを加工するために、visitはFirstChildリンクリストに保持されているnのChildに対して、自身を再帰的に呼び出す
+	// ノードnに対するツリーを下降するために、visitはFirstChildリンクリストに保持されているnのChildに対して、自身を再帰的に呼び出す
+	// FYI: 子要素を持つ限り、バケツリレーでlinksの配列を渡していって「これ以上、もってないよ」ってなったら大元に返す
+	// ./fetch https://go.dev | ./findlinks1 > hoge
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		links = visit(links, c)
+		// fmt.Println("proc:", links)
 	}
 	return links
 }
